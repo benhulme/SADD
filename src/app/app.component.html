@@ -1,0 +1,248 @@
+
+<div id="nav-container">
+  <div class="nav-menu">
+    <div id="nav-icon" [class.open]="navState" (click)="toggleNavMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <div class="nav-logo">
+    <a (click)="onNavigate('https://sadd.org.nz/','sadd.org.nz','External Link','click','SADD CTA')" class="url-link">
+      <img src="assets/img/nav-logo@{{sizingClass}}.png" alt="Students Against Dangerous Driving" class="_{{sizingClass}}">
+    </a>
+  </div>
+</div>
+
+<div class="banner-container" [style.height.px]="innerHeightSmall" (window:resize)="onResize($event)">
+  <div class="banner">
+    <div class="logo">
+      <img src="assets/img/banner-logo@{{sizingClass}}.png" class="_{{sizingClass}}">
+    </div>
+    <div class="heading">
+      PHONE FREE <span class="mobile-br"><br></span>48 CHALLENGE
+    </div>
+    <div class="hr">
+      <img src="assets/img/banner-hr.png">
+    </div>
+    <div class="caption">
+      Going 48 hours without your <span class="mobile-br"><br></span>phone won't kill you, but using <span class="mobile-br"><br></span>a phone while driving might.
+      <br><br>
+      Join the challenge from <span class="mobile-br"><br></span>6pm Friday May 25<sup>th</sup> to <span class="mobile-br"><br></span>6pm Sunday May 27<sup>th</sup>
+    </div>
+  </div>
+  <div class="chevron" (click)="trackGAEvent('Internal Link','click','Page Scroll')">
+    <i pageScroll href="#scroll-to" class="fas fa-chevron-down"></i>
+  </div>
+</div>
+
+<div id="scroll-to" class="video-container">
+  <div class="video-wrapper">    
+    <div class="video">
+      <div id="vimeoVideo"></div>
+    </div>
+    <div class="take-part">
+      <img src="assets/img/intro-stop-icon@{{sizingClass}}.png" class="_{{sizingClass}}">
+      <p>This is how <br>you take part <br>in the phone <br>free 48 challenge.</p>
+    </div>
+  </div>
+</div>
+
+<div class="instructions-container">
+  <div class="instructions">
+    <div class="item">
+      <img src="assets/img/sign-up-1@{{sizingClass}}.png" class="_{{sizingClass}}">
+      <div class="heading">1. Sign up</div>
+      <div class="copy">Go to everydayhero.co.nz <span class="mobile-br"><br></span>to sign up.</div>
+      <a (click)="onNavigate('https://phonefree48challenge.everydayhero.com/nz/get-started','phonefree48challenge.everydayhero.com','External Link','click','Sign Up CTA')" class="url-link">
+        <div class="link yellow">everydayhero.co.nz</div>
+      </a>
+    </div>
+    <div class="item">
+      <img src="assets/img/sign-up-2@{{sizingClass}}.png" class="_{{sizingClass}}">
+      <div class="heading">2. Tell your friends</div>
+      <div class="copy">Once you've signed up <span class="mobile-br"><br></span>tell your friends that <span class="mobile-br"><br></span>you need their support!</div>
+    </div>
+    <div class="item">
+      <img src="assets/img/sign-up-3@{{sizingClass}}.png" class="_{{sizingClass}}">
+      <div class="heading">3. Good luck!</div>
+      <div class="copy">Go Phone Free! <span class="mobile-br"><br></span>You're not alone,<span class="mobile-br"><br></span> get together with <span class="mobile-br"><br></span>your friends to <span class="mobile-br"><br></span>support each other.</div>
+    </div>
+  </div>
+</div>
+
+<div class="donate-copy-container">
+    <div class="donate-copy">
+      <img src="assets/img/donate@{{sizingClass}}.png" class="_{{sizingClass}}">
+      <div class="heading"><p>DONATE <br> TO SADD</p></div>
+      <div class="caption">
+        <p>
+          If you can't participate or <span class="mobile-br"><br></span>don't know a student to <span class="mobile-br"><br></span>sponsor you can still <span class="mobile-br"><br></span>support SADD.
+        </p>
+      </div>
+    </div>
+  </div>
+
+<div class="donate-cta-container">
+  <div class="donate-cta">
+    <div class="caption">
+      <p>
+        Support our young people to <span class="mobile-br"><br></span>help influence positive <span class="mobile-br"><br></span>driving behaviour and <span class="mobile-br"><br></span>reduce the incidents of <span class="mobile-br"><br></span>deaths and serious injuries <span class="mobile-br"><br></span>on our roads.
+      </p>
+    </div>
+    <a (click)="onNavigate('https://donate.everydayhero.com/d/qfcqWa8uWVmCbSespXUMdg','donate.everydayhero.com','External Link','click','Donate CTA')" class="url-link">
+      <div class="link yellow">DONATE TO SADD</div>
+    </a>
+  </div>
+</div>
+
+<div class="spread-word-container">
+  <div class="spread-word">
+    <img src="assets/img/spread-phone-icon@{{sizingClass}}.png" class="_{{sizingClass}}">
+    <div class="copy">
+      <div class="heading">
+        <p>Spread <span class="mobile-br"><br></span>the word!</p>
+      </div>
+      <div class="caption">
+        <p>Share these posts to spread <span class="mobile-br"><br></span>the word and raise awareness <span class="mobile-br"><br></span>of driving phone free.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="print-grid" class="grid-container">
+  <div class="heading">POSTERS</div>
+  <div class="caption">
+    <p>Download a poster, print it out and hang it at school, uni, work or wherever.</p>
+  </div>
+  <masonry [options]="masonryOptions" [useImagesLoaded]="true">
+    <masonry-brick *ngFor="let asset of printAssets; let i = index;" class="grid-item {{asset.size}} print" (click)="trackGAEvent('Internal Link','click','Poster Download')">
+      <a href="{{ asset.assetPath }}{{ asset.assetName }}" download [attr.target]="targetSelf">
+        <img src="{{ asset.tilePath }}{{ asset.tileName }}" id="print-{{i}}">
+        <img class="download-link _{{sizingClass}}" src="assets/img/download-icon-yellow@{{sizingClass}}.png">
+      </a>
+    </masonry-brick>
+  </masonry>
+</div>
+
+<div id="social-grid" class="grid-container">
+  <div class="heading">SOCIAL POSTS</div>
+  <div class="caption">
+    <p>Pick an asset, customise it and share it as an Instagram story or just share this page.</p>
+    <div class="fb-share-button" data-href="http://phonefree48.org.nz" data-layout="button_count" data-size="large" data-mobile-iframe="true" (click)="testClick()">
+      <a target="_blank" 
+        (click)="onNavigate('https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fphonefree48.org.nz%2F&amp;src=sdkpreparse','www.facebook.com/sharer','External Link','click','Facebook Share')" class="url-link"
+        class="fb-xfbml-parse-ignore">Share</a>
+    </div>
+  </div>
+  <masonry [options]="masonryOptions" [useImagesLoaded]="true">
+    <masonry-brick *ngFor="let asset of socialAssets; let i = index;" class="grid-item {{asset.size}} social" (click)="trackGAEvent('Internal Link','click','Social Download')">
+      <a href="{{ asset.assetPath }}{{ asset.assetName }}" download [attr.target]="targetSelf">
+        <img src="{{ asset.tilePath }}{{ asset.tileName }}" id="social-{{i}}">
+        <img class="download-link _{{sizingClass}}" src="assets/img/download-icon-black@{{sizingClass}}.png">
+      </a>
+    </masonry-brick>
+  </masonry>
+</div>
+
+<div class="people-saying-container">
+  <div class="people-saying">
+    <img src="assets/img/speech-bubble-icon@{{sizingClass}}.png" class="_{{sizingClass}}">
+    <div class="heading">
+      <p>
+        Here's what <span class="mobile-br"><br></span>people are <span class="mobile-br"><br></span>saying.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="shared-grid-container">
+  <div class="shared-grid">
+    <div class="grid-item instagram">
+      <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/Bi23OYRn_Fs/" data-instgrm-version="8" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:62.5% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/Bi23OYRn_Fs/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">Don’t be that guy. The texting on your phone while driving guy. Do the #PhoneFree48 challenge whānau! ☠️⚠️🚫</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A post shared by <a href="https://www.instagram.com/anneshewas/" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;" target="_blank"> cheryl anne</a> (@anneshewas) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2018-05-16T23:54:22+00:00">May 16, 2018 at 4:54pm PDT</time></p></div></blockquote>
+    </div>
+    <div class="grid-item instagram">
+      <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/BjBizgfhEDB/" data-instgrm-version="8" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:55.131264916467785% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BjBizgfhEDB/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">#Repost @saddnz ··· Take the #phonefree48 challenge and fundraise for SADD! #shareifyoucare #linkinbio #saddnz</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A post shared by <a href="https://www.instagram.com/jet_mag_nz/" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;" target="_blank"> JETmag</a> (@jet_mag_nz) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2018-05-21T03:18:25+00:00">May 20, 2018 at 8:18pm PDT</time></p></div></blockquote>
+    </div>
+    <div class="grid-item instagram">
+      <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/BjDntmhgVnb/" data-instgrm-version="8" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:53.693931398416886% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BjDntmhgVnb/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">SADD needs your help to end distracted driving! Signup, donate, or share 😍 #phonefree48 #linkinbio</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A post shared by <a href="https://www.instagram.com/saddnz/" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;" target="_blank"> SADD New Zealand</a> (@saddnz) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2018-05-21T22:39:46+00:00">May 21, 2018 at 3:39pm PDT</time></p></div></blockquote> <script async defer src="//www.instagram.com/embed.js"></script>
+    </div>
+    <div class="grid-item twitter">  
+      <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Could you do it? <a href="https://twitter.com/SADDNZ?ref_src=twsrc%5Etfw">@SADDNZ</a> are encouraging students to ‘go completely <a href="https://twitter.com/hashtag/phonefree?src=hash&amp;ref_src=twsrc%5Etfw">#phonefree</a>’ for 48hrs to highlight the dangers of using your phone while driving. Going 48hrs without your phone won’t kill you, but using a phone while driving might. <a href="https://t.co/iWSm6IVD24">https://t.co/iWSm6IVD24</a> <a href="https://twitter.com/hashtag/saddnz?src=hash&amp;ref_src=twsrc%5Etfw">#saddnz</a> <a href="https://twitter.com/hashtag/phonefree48?src=hash&amp;ref_src=twsrc%5Etfw">#phonefree48</a> <a href="https://t.co/WfBef2jmLQ">pic.twitter.com/WfBef2jmLQ</a></p>&mdash; JETmag (@JETmagazine) <a href="https://twitter.com/JETmagazine/status/997329042104881152?ref_src=twsrc%5Etfw">May 18, 2018</a></blockquote>
+    </div>
+    <div class="grid-item twitter">
+      <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Join me next weekend. <a href="https://t.co/Jzc54do6mE">https://t.co/Jzc54do6mE</a> <a href="https://t.co/VAOrgiwGSA">pic.twitter.com/VAOrgiwGSA</a></p>&mdash; emma b (@BossleyEmma) <a href="https://twitter.com/BossleyEmma/status/996904686086062080?ref_src=twsrc%5Etfw">May 17, 2018</a></blockquote>
+    </div>
+    <div class="grid-item twitter">
+      <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/SADDNZ?ref_src=twsrc%5Etfw">@SADDNZ</a> takes a stand against distracted driving - With the road toll rising, and young people over-represented in crash statistics, drivers need to keep their eyes on the road and not their phones <a href="https://t.co/xZreKTtGV7">https://t.co/xZreKTtGV7</a> <a href="https://t.co/dTxj8fQ9XK">pic.twitter.com/dTxj8fQ9XK</a></p>&mdash; Autofile (@autofilenz) <a href="https://twitter.com/autofilenz/status/999045735524876288?ref_src=twsrc%5Etfw">May 22, 2018</a></blockquote>
+    </div>
+    <div class="grid-item instagram">
+      <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/BjF-xT1AmHE/" data-instgrm-version="8" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:54.270833333333336% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BjF-xT1AmHE/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">GO TO https://phonefree48challenge.everydayhero.com/nz/jasmines-phone-free-48 TO SUPPORT ME AND @saddnz !! (Or just click the link in my bio) :)</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A post shared by <a href="https://www.instagram.com/just.a.little.bit.of.nothing/" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;" target="_blank"> Jasmine</a> (@just.a.little.bit.of.nothing) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2018-05-22T20:39:44+00:00">May 22, 2018 at 1:39pm PDT</time></p></div></blockquote> 
+    </div>
+    <div class="grid-item instagram">  
+      <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/BjBMICrAR9a/" data-instgrm-version="8" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50.0% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BjBMICrAR9a/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">Need someone to do #phonefree48 with? How about your group from Conference?! #saddnz</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A post shared by <a href="https://www.instagram.com/saddnz/" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;" target="_blank"> SADD New Zealand</a> (@saddnz) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2018-05-21T00:00:14+00:00">May 20, 2018 at 5:00pm PDT</time></p></div></blockquote>
+    </div>
+    <div class="grid-item instagram">
+      <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/BjGVX1JDPsR/" data-instgrm-version="8" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50.26315789473684% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAMUExURczMzPf399fX1+bm5mzY9AMAAADiSURBVDjLvZXbEsMgCES5/P8/t9FuRVCRmU73JWlzosgSIIZURCjo/ad+EQJJB4Hv8BFt+IDpQoCx1wjOSBFhh2XssxEIYn3ulI/6MNReE07UIWJEv8UEOWDS88LY97kqyTliJKKtuYBbruAyVh5wOHiXmpi5we58Ek028czwyuQdLKPG1Bkb4NnM+VeAnfHqn1k4+GPT6uGQcvu2h2OVuIf/gWUFyy8OWEpdyZSa3aVCqpVoVvzZZ2VTnn2wU8qzVjDDetO90GSy9mVLqtgYSy231MxrY6I2gGqjrTY0L8fxCxfCBbhWrsYYAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/BjGVX1JDPsR/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">I&#39;m doing #phonefree48 to help raise awareness of distracted driving! I&#39;d love your support ☺ #linkbelow #linkinbio #saddnz . phonefree48challenge.everydayhero.com/nz/alex-goes-phone-free</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A post shared by <a href="https://www.instagram.com/safetysquadalex/" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px;" target="_blank"> Alex Drummond</a> (@safetysquadalex) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2018-05-22T23:57:14+00:00">May 22, 2018 at 4:57pm PDT</time></p></div></blockquote>
+    </div>
+</div>
+
+<div class="footer-container">
+  <div class="footer">
+    <div class="caption"><p>SADD and The Phone Free 48 <span class="mobile-br"><br></span>Challenge are supported by</p></div>
+    <div class="popup-logos">
+      <div class="item">
+        <a (click)="onNavigate('https://kiwiplates.nz/','kiwiplates.co.nz','External Link','click','Footer CTA')" class="url-link">
+          <img src="assets/img/popup-kiwiplates-logo@{{sizingClass}}.png" alt="Kiwi Plates" class="_{{sizingClass}}">
+        </a>
+      </div>
+      <div class="item">
+        <a (click)="onNavigate('https://www.nzta.govt.nz/','nzta.govt.nz','External Link','click','Footer CTA')" class="url-link">
+          <img src="assets/img/popup-nzta-logo@{{sizingClass}}.png" alt="New Zealand Transport Agency" class="_{{sizingClass}}">
+        </a>
+      </div>
+      <div class="item">
+        <a (click)="onNavigate('https://www.aa.co.nz/','www.aa.co.nz','External Link','click','Footer CTA')" class="url-link">
+          <img src="assets/img/aa-logo@{{sizingClass}}.png" alt="AA Motoring" class="_{{sizingClass}}">
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="signup-popup" [class.hidden]="!navState" class="hidden" [style.height.px]="innerHeight">
+  <div class="banner-container">
+    <div class="banner">
+      <div class="logo">
+        <img src="assets/img/banner-logo@{{sizingClass}}.png" class="_{{sizingClass}}">
+      </div>
+      <div class="heading">
+        PHONE FREE <span class="mobile-br"><br></span>48 CHALLENGE
+      </div>
+      <div class="caption">
+        SADD and The Phone Free 48 <span class="mobile-br"><br></span>Challenge are supported by
+      </div>
+      <div class="popup-logos">
+        <div class="item">
+          <a (click)="onNavigate('https://kiwiplates.nz/','kiwiplates.co.nz','External Link','click','Menu CTA')" class="url-link">
+            <img src="assets/img/popup-kiwiplates-logo@{{sizingClass}}.png" alt="Kiwi Plates" class="_{{sizingClass}}">
+          </a>
+        </div>
+        <div class="item">
+          <a (click)="onNavigate('https://www.nzta.govt.nz/','nzta.govt.nz','External Link','click','Menu CTA')" class="url-link">
+            <img src="assets/img/popup-nzta-logo@{{sizingClass}}.png" alt="New Zealand Transport Agency" class="_{{sizingClass}}">
+          </a>
+        </div>
+        <div class="item">
+          <a (click)="onNavigate('https://www.aa.co.nz/','www.aa.co.nz','External Link','click','Menu CTA')" class="url-link">
+            <img src="assets/img/aa-logo@{{sizingClass}}.png" alt="AA Motoring" class="_{{sizingClass}}">
+          </a>
+        </div>
+      </div>
+      <div class="caption">
+        <a (click)="onNavigate('https://sadd.org.nz/','sadd.org.nz','External Link','click','Menu CTA')" class="url-link">Learn more at sadd.org.nz</a>
+      </div>
+    </div>
+  </div>
+</div>

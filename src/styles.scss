@@ -1,0 +1,92 @@
+/* GLOBAL STYLES */
+@font-face {
+  font-family: 'AvenirNextRegular';
+  src: url(assets/fonts/AvenirNext-Regular.eot) format('embedded-opentype');
+  src: url(assets/fonts/AvenirNext-Regular.eot?#iefix) format('embedded-opentype');
+  src: url(assets/fonts/AvenirNext-Regular.ttf) format('truetype');
+  src: url(assets/fonts/AvenirNext-Regular.woff) format('woff');
+}
+@font-face {
+  font-family: 'AvenirNextBold';
+  src: url(assets/fonts/AvenirNext-Bold.eot) format('embedded-opentype');
+  src: url(assets/fonts/AvenirNext-Bold.eot?#iefix) format('embedded-opentype');
+  src: url(assets/fonts/AvenirNext-Bold.ttf) format('truetype');
+  src: url(assets/fonts/AvenirNext-Bold.woff) format('woff');
+}
+@font-face {
+  font-family: 'AvenirNextHeavy';
+  src: url(assets/fonts/AvenirNext-Heavy.eot) format('embedded-opentype');
+  src: url(assets/fonts/AvenirNext-Heavy.eot?#iefix) format('embedded-opentype');
+  src: url(assets/fonts/AvenirNext-Heavy.ttf) format('truetype');
+  src: url(assets/fonts/AvenirNext-Heavy.woff) format('woff');
+}
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'AvenirNextRegular';
+}
+$yellow: #FFD601;
+$black: #221E20;
+
+a:focus, a:active,
+.nav-icon:focus, .nav-icon:active,
+.nav-menu:focus, .nav-menu:active {
+  outline: none;
+  border: none;
+}
+.url-link { cursor: pointer; }
+.main-container {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden; 
+  overflow-y: hidden;
+}
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  background-color: #221E20;
+  color: #fff;
+
+  .hidden { display: none; }
+
+  .link {
+    padding: 7px 16px 9px;
+    display: inline-block;
+    margin: 15px 0;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    font-family: 'Helvetica Neue';
+    &.yellow {
+      color: $black;
+      background: $yellow;
+      border: 1px solid $yellow;
+      transition: all 0.2s ease-in-out;
+      &:hover {
+        background: transparent;
+        color: #fff;
+        cursor: pointer;
+      }
+    }
+    &.black {
+      color: $yellow;
+      background: $black;
+      border: 1px solid $black;
+      transition: all 0.2s ease-in-out;
+      &:hover {
+        background: transparent;
+        color: $black;
+        cursor: pointer;
+      }
+    }
+  }
+  @media screen and (max-width: 629px) {  
+    .link {
+      font-size: 14px !important;
+    }
+  }
+
+}
